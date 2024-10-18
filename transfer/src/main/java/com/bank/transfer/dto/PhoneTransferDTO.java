@@ -1,12 +1,8 @@
 package com.bank.transfer.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
-@AllArgsConstructor
+@Data
 public class PhoneTransferDTO {
 
     private Long id;

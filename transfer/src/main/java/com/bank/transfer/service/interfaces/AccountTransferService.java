@@ -3,7 +3,6 @@ package com.bank.transfer.service.interfaces;
 import com.bank.transfer.dto.AccountTransferDTO;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface AccountTransferService {
 
@@ -17,5 +16,5 @@ public interface AccountTransferService {
 
     AccountTransferDTO update(AccountTransferDTO accountTransferDTO);
 
-    Optional<AccountTransferDTO> findByAccountNumber(Long accountNumber);
+    AccountTransferDTO findByAccountNumber(Long accountNumber);
 }

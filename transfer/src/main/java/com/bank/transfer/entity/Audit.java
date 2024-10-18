@@ -6,10 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "audit")
+@Table(name = "audit", schema = "transfer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,22 +24,26 @@ public class Audit {
     private Long id;
 
     @Column(name = "entity_type")
+    @Size(max = 40)
     private String entityType;
 
     @Column(name = "operation_type")
+    @Size(max = 255)
     private String operationType;
 
     @Column(name = "created_by")
+    @Size(max = 255)
     private String createdBy;
 
     @Column(name = "modified_by", nullable = false)
+    @Size(max = 255)
     private String modifiedBy;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "modified_at", nullable = false)
-    private Timestamp modifiedAt;
+    private LocalDateTime modifiedAt;
 
     @Column(name = "new_entity_json", nullable = false)
     private String newEntityJson;

@@ -2,6 +2,7 @@ package com.bank.transfer.service;
 
 import com.bank.transfer.dto.CardTransferDTO;
 import com.bank.transfer.entity.CardTransfer;
+import com.bank.transfer.exception.EntityNotFoundException;
 import com.bank.transfer.mapper.CardTransferMapper;
 import com.bank.transfer.repository.CardTransferRepository;
 import com.bank.transfer.service.interfaces.CardTransferService;
@@ -12,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class CardTransferServiceImpl implements CardTransferService {
 
     private final CardTransferRepository cardTransferRepository;
@@ -30,28 +30,35 @@ public class CardTransferServiceImpl implements CardTransferService {
     }
 
     @Override
-    public Optional<CardTransferDTO> getById(Long id) {
-        return cardTransferRepository.findById(id).map(cardTransferMapper::toDtoCardTransfer);
+    public CardTransferDTO getById(Long id) {
+        CardTransfer cardTransfer = cardTransferRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Card transfer with id " + id + " not found"));
+        return cardTransferMapper.toDtoCardTransfer(cardTransfer);
     }
 
     @Override
+    @Transactional
     public CardTransferDTO save(CardTransferDTO cardTransferDTO) {
         CardTransfer cardTransfer = cardTransferMapper.toCardTransfer(cardTransferDTO);
         return cardTransferMapper.toDtoCardTransfer(cardTransferRepository.save(cardTransfer));
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         cardTransferRepository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public CardTransferDTO update(CardTransferDTO cardTransferDTO) {
         return cardTransferMapper.toDtoCardTransfer(cardTransferRepository.save(cardTransferMapper.toCardTransfer(cardTransferDTO)));
     }
 
     @Override
-    public Optional<CardTransferDTO> findByCardNumber(Long cardNumber) {
-        return cardTransferRepository.findByCardNumber(cardNumber).map(cardTransferMapper::toDtoCardTransfer);
+    public CardTransferDTO findByCardNumber(Long cardNumber) {
+        CardTransfer cardTransfer = cardTransferRepository.findByCardNumber(cardNumber)
+                .orElseThrow(() -> new EntityNotFoundException("Card transfer with card number " + cardNumber + " not found"));
+        return cardTransferMapper.toDtoCardTransfer(cardTransfer);
     }
 }

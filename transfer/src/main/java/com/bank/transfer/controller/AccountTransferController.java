@@ -17,7 +17,7 @@ public class AccountTransferController {
         this.accountTransferService = accountTransferService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<AccountTransferDTO>> getAll() {
         return ResponseEntity.ok(accountTransferService.getAll());
     }

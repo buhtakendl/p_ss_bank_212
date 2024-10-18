@@ -10,7 +10,7 @@ public interface CardTransferService {
 
     List<CardTransferDTO> getAll();
 
-    Optional<CardTransferDTO> getById(Long id);
+    CardTransferDTO getById(Long id);
 
     CardTransferDTO save(CardTransferDTO cardTransferDTO);
 
@@ -18,5 +18,5 @@ public interface CardTransferService {
 
     CardTransferDTO update(CardTransferDTO cardTransferDTO);
 
-    Optional<CardTransferDTO> findByCardNumber(Long cardNumber);
+    CardTransferDTO findByCardNumber(Long cardNumber);
 }

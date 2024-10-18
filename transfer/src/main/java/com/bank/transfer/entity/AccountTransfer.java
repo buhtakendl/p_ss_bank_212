@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "account_transfer")
+@Table (name = "account_transfer", schema = "transfer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class AccountTransfer {
     @Column (name = "account_number", unique = true)
     private Long accountNumber;
 
-    @Column (name = "amount")
+    @Column (name = "amount", precision = 20, scale = 2)
     private Double amount;
 
     @Column (name = "purpose", nullable = false)

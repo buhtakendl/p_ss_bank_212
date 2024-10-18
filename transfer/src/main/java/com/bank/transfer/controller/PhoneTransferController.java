@@ -26,7 +26,7 @@ public class PhoneTransferController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<PhoneTransferDTO>> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<PhoneTransferDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(phoneTransferService.getById(id));
     }
 

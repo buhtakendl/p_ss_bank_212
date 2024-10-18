@@ -10,7 +10,7 @@ public interface PhoneTransferService {
 
     List<PhoneTransferDTO> getAll();
 
-    Optional<PhoneTransferDTO> getById(Long id);
+    PhoneTransferDTO getById(Long id);
 
     PhoneTransferDTO save(PhoneTransferDTO phoneTransferDTO);
 
@@ -18,6 +18,6 @@ public interface PhoneTransferService {
 
     PhoneTransferDTO update(PhoneTransferDTO phoneTransfer);
 
-    Optional<PhoneTransferDTO> findByPhoneNumber(Long phoneNumber);
+    PhoneTransferDTO findByPhoneNumber(Long phoneNumber);
 
 }

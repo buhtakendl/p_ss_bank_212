@@ -25,7 +25,7 @@ public class CardTransferController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<CardTransferDTO>> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<CardTransferDTO> getById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(cardTransferService.getById(id));
     }
 
